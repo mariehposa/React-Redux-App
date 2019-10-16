@@ -48,7 +48,6 @@ export const StyledButton = styled.button`
 `
 
 export const FieldStyle = styled(Field)`
-    align-self:center;
     width: 45%;
     padding: .7rem;
     margin: 1rem ;
