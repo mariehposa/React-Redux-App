@@ -5,10 +5,10 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import CharacterList from './components/CharacterList';
-import { SearchForm } from './components/SearchForm';
+import SearchForm from './components/SearchForm';
 
 const monsterReducer = combineReducers({
-  character: reducers.characterReducer
+  characterState: reducers.characterReducer
 })
 
 const store = createStore(

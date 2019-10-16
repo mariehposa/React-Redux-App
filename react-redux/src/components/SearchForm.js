@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field} from 'formik';
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+import { StyledButton, FieldStyle } from './Styles';
 
 const initialUserForm = {
   name: '',
@@ -9,21 +10,13 @@ const initialUserForm = {
 
 
 export function SearchForm(props) {
-   console.log(props);
+    const {searchByName} = props;
    
     function search(formValues, actions){
         const term = `?name=${formValues.name}`
-        // const newUrl = url+term
-        // console.log(newUrl);
-        
-        // searchByName(term);
-        
-        // const name = formValues.name.toLowerCase();
-        // const newCharacters = characterData.filter(character => character.name.toLowerCase().includes(name))
-        // setCharacterData(newCharacters)
+        searchByName(term);
+        actions.resetForm();
     }
-    
-
 
   return (
     <section className="search-form">
@@ -33,11 +26,8 @@ export function SearchForm(props) {
             render={props => {
                 return (
                     <Form>
-                        <label>
-                            Name
-                            <Field name='name' type='text' placeholder='Search name here!' />
-                        </label>
-                        <button type='submit'>Search</button>
+                        <FieldStyle name='name' type='text' placeholder='Search name here!' />
+                        <StyledButton type='submit'>Search</StyledButton>
                     </Form>
                 )
             }}
@@ -45,7 +35,6 @@ export function SearchForm(props) {
     </section>
   );
 }
-
 
 export default connect(
     state => state,

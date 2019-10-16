@@ -29,15 +29,10 @@ export const searchByName = (character) => {
     }
 }
 
-const characterApi = `https://rickandmortyapi.com/api/character`;
-
 export const getCharacter = (url) => dispatch => {
     axios.get(url)
         .then(res => {
-            console.log(res.data)
             dispatch(add(res.data))
-            // dispatch(nextPage(res.data.info.next));
-            // dispatch(prevPage(res.data.info.prev));
         })
         .catch(err => {
             //console.log(err.message)

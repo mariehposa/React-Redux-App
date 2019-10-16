@@ -2,23 +2,22 @@ import React, {useEffect} from 'react';
 import * as actionCreators from '../state/actionCreators';
 import { connect } from 'react-redux';
 import CharacterCard from './CharacterCard';
-import { ParentStyle } from './Styles';
+import { ParentStyle, StyledButton } from './Styles';
 
 export function CharacterList (props) {
-    const {character, getCharacter, nextPage, prevPage} = props;
-    console.log(props);
+    const {characterState, getCharacter, nextPage, prevPage} = props;
     
     useEffect(() => {
-        getCharacter(character.url)
-    }, [character.url])
+        getCharacter(characterState.url)
+    }, [characterState.url])
 
     return (
         <ParentStyle>
             {
-                character.characters.map(feature => <CharacterCard key={feature.id} character={feature} />)
+                characterState.characters.map(feature => <CharacterCard key={feature.id} character={feature} />)
             }
-            <button onClick={() => nextPage(character.nextUrl)}>Next Page</button>
-            <button onClick={() => prevPage(character.prevUrl)}>Previous Page</button>
+            <StyledButton onClick={() => nextPage(characterState.nextUrl)}>Next Page</StyledButton>
+            <StyledButton onClick={() => prevPage(characterState.prevUrl)}>Previous Page</StyledButton>
         </ParentStyle>
     );
 }

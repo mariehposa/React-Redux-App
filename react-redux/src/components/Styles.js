@@ -41,8 +41,15 @@ export const ParentStyle = styled.div`
 `
 
 export const StyledButton = styled.button`
-   padding: 1.2rem;
+   padding: .7rem;
    border-radius: 2rem;
-   background: green;
+   background: blue;
    margin-left: 1rem;
+`
+
+export const FieldStyle = styled(Field)`
+    align-self:center;
+    width: 45%;
+    padding: .7rem;
+    margin: 1rem ;
 `
