@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import * as reducers from './state/reducers';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import CharacterList from './components/CharacterList';
+import { SearchForm } from './components/SearchForm';
+
+const monsterReducer = combineReducers({
+  character: reducers.characterReducer
+})
+
+const store = createStore(
+  monsterReducer,
+  {},
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
+)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1 className="Header">WELCOME TO <span style={{color: "green"}}>RICK</span> AND <span style={{color: "green"}}> MORTY </span>!</h1>
+        <SearchForm />
+        <CharacterList />
+
+      </div>
+    </Provider>
   );
 }
 
