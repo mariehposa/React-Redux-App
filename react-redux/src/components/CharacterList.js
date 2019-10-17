@@ -16,8 +16,8 @@ export function CharacterList (props) {
             {
                 characterState.characters.map(feature => <CharacterCard key={feature.id} character={feature} />)
             }
-            <StyledButton onClick={() => nextPage(characterState.nextUrl)}>Next Page</StyledButton>
             <StyledButton onClick={() => prevPage(characterState.prevUrl)}>Previous Page</StyledButton>
+            <StyledButton onClick={() => nextPage(characterState.nextUrl)}>Next Page</StyledButton>
         </ParentStyle>
     );
 }
