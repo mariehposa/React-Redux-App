@@ -45,7 +45,6 @@ export const StyledButton = styled.button`
    padding: .7rem;
    border-radius: 2rem;
    background: blue;
-   margin-left: 1rem;
 `
 
 export const FieldStyle = styled(Field)`
